@@ -2,16 +2,61 @@ body { color: #000; }
 
 .horizontalRow { overflow-x:scroll;
     overflow-y:hidden;
-    height:200px;
     width:100%;
-    padding: 0 15px;
+    height:100%;
+    padding:0;
+    position:absolute;
+    top:0;
+    -webkit-overflow-scrolling: touch;
 }
 
-ul { white-space:nowrap; }
+ul { white-space:nowrap;
+     height:100%;
+}
 
-ul li { border:1px solid black;
+ul li { border:none;
     padding:0;
-    height:200px;
+    height:100%;
     width:100%;
     display:inline-block;
+    margin:0;
+    white-space: normal;
+}
+
+img { width: 300px;
+    margin: 200px auto 200px auto;
+    display: block;
+    border-radius:50%; 
+}
+
+span { text-align: center;
+       display:block;
+       margin: 0 100px 0 100px;
+}
+
+
+.leftRight {
+    background-color: red;
+    width: 30px;
+    height: 100px;
+    float: right;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -50px;
+}
+
+
+.blink_me {
+  animation: blinker 5s linear infinite;
+}
+
+@keyframes blinker {  
+  50% { opacity: 0.0; }
+}
+
+
+/* For devices 400px and larger: */
+@media only screen and (min-device-width: 768px) {
+    .image1 { content:url('/assets/Scott_1.JPG'); }
 }

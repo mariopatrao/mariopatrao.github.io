@@ -1,3 +1,16 @@
 body { color: #000; }
 
-.mobileRow { white-space:nowrap; }
+.horizontalRow { overflow-x: scroll;
+    overflow-y: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+ul { white-space:nowrap; }
+
+ul li { border: 1px solid black;
+    	padding: 0;
+    	height: 100%;
+    	width: 100%;
+    	display: inline-block;
+}

@@ -23,15 +23,15 @@ ul li { border:none;
     white-space: normal;
 }
 
-img { width: 300px;
-    margin: 200px auto 200px auto;
+img { width: 100px;
+    margin: 80px auto 80px auto;
     display: block;
     border-radius:50%; 
 }
 
 span { text-align: center;
        display:block;
-       margin: 0 100px 0 100px;
+       margin: 0 50px 0 50px;
 }
 
 

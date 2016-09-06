@@ -1,4 +1,4 @@
-$('.masterWrapper ').on('swipe', function () {
+$('ul').on('swipe', function () {
     alert('in');
     $(document).scrollTo('ul li');
 });

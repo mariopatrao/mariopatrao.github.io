@@ -1,4 +1,4 @@
-$('ul').on('swipe', function () {
+$('ul').on('scroll', function () {
     alert('in');
     $(document).scrollTo('ul li');
 });

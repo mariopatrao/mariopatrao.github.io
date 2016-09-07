@@ -1,5 +1,13 @@
 body { font-family: 'Open Sans', sans-serif;
-    color: #000; }
+    color: #000;
+    font-size: 1.1em;
+    line-height: 1.2em;
+    background-color: #fff;
+}
+
+.noPadding {
+    padding: 0;
+}
 
 .horizontalRow { overflow-x:scroll;
     overflow-y:hidden;
@@ -24,7 +32,7 @@ ul li { border:none;
     white-space: normal;
 }
 
-img { width: 100px;
+img { width: 120px;
     margin: 50px auto 50px auto;
     display: block;
     border-radius:50%; 

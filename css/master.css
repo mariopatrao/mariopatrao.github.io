@@ -17,6 +17,7 @@ body { font-family: 'Open Sans', sans-serif;
     position:absolute;
     top:0;
     -webkit-overflow-scrolling: touch;
+    z-index:1;
 }
 
 ul { white-space:nowrap;
@@ -43,7 +44,25 @@ span { text-align: center;
        margin: 0 50px 0 50px;
 }
 
+.arrow {
+    background: url('/assets/Arrow.png') 0 15px no-repeat;
+    width: 30px;
+    height: 100px;
+    float: right;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -50px;
+    opacity: 0.4;
+}
 
+.arrow.left{
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
 .leftRight {
     background-color: red;
     width: 30px;
@@ -65,7 +84,27 @@ span { text-align: center;
 }
 
 
-/* For devices 400px and larger: */
+/* For devices 768px and larger: */
 @media only screen and (min-device-width: 768px) {
+    .image1 { content:url('/assets/Scott_1.JPG'); }
+}
+
+/* For devices 1024px and larger: */
+@media only screen and (min-device-width: 1024px) {
+
+    .topImage, .topText { height: 100%; }
+    img {
+        position: relative;
+        top: 50%;
+        width: 220px;
+        margin-top:0;
+        transform: translateY(-50%);
+    }
+
+    span {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
     .image1 { content:url('/assets/Scott_1.JPG'); }
 }

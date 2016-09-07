@@ -18,10 +18,10 @@ $(function () {
     });*/
 
     // Bind the swiperightHandler callback function to the swipe event
-    //$('.horizontalRow').on("swiperight", goRight());
+    $('.horizontalRow').on("swiperight", goRight());
 
     // Bind the swipeleftHandler callback function to the swipe event
-    //$('.horizontalRow').on("swipeleft", goLeft());
+    $('.horizontalRow').on("swipeleft", goLeft());
 
     $(document).keydown(function (e) {
         //leftPos = $('.horizontalRow').scrollLeft();
@@ -52,6 +52,7 @@ $(function () {
 
 
 function goLeft() {
+    console.log('executing swipe');
     leftPos = $('.horizontalRow').scrollLeft();
     sectionSize = $('ul li').outerWidth();
     $('.horizontalRow').animate({ scrollLeft: leftPos - sectionSize }, 800);

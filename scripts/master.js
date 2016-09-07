@@ -1,6 +1,9 @@
 var leftPos;
 var sectionSize;
 
+
+
+
 $(function () {
 
     $('.horizontalRow').mousewheel(function (event, delta) {
@@ -11,17 +14,31 @@ $(function () {
 
     });
 
-    /*$('.horizontalRow').on('scroll', function () {
-        //alert('in');
-        //$(document).scrollTo('.next');
-        $('ul').scrollLeft('500px');
-    });*/
-
     // Bind the swiperightHandler callback function to the swipe event
-    $('.horizontalRow').on("swiperight", goRight());
+    //$('.horizontalRow').on("swiperight", goRight());
 
     // Bind the swipeleftHandler callback function to the swipe event
-    $('.horizontalRow').on("swipeleft", goLeft());
+    //$('.horizontalRow').on("swipeleft", goLeft());
+
+    $('.horizontalRow').swipe({
+        //Generic swipe handler for all directions
+        swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+            //$(this).text("You swiped " + direction);
+            console.log('you swiped ' + direction);
+            switch (direction) {
+                case 'left':
+                    goRight();
+                    break;
+                case 'right':
+                    goLeft();
+                    break;
+                default: return;
+            }
+        },
+        //Default is 75px, set to 0 for demo so any distance triggers swipe
+        threshold: 0
+    });
+
 
     $(document).keydown(function (e) {
         //leftPos = $('.horizontalRow').scrollLeft();

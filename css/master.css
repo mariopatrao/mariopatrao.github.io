@@ -24,13 +24,19 @@ ul { white-space:nowrap;
      height:100%;
 }
 
-ul li { border:none;
+ul li { 
+    border:none;
     padding:0;
     height:100%;
     width:100%;
     display:inline-block;
+    position: relative;
     margin:0;
     white-space: normal;
+}
+
+ul li ul li {
+    display: block;
 }
 
 img { width: 120px;
@@ -44,10 +50,31 @@ span { text-align: center;
        margin: 0 50px 0 50px;
 }
 
+.bigInnerList { 
+    text-align: center;
+       display:block;
+       margin: 0 50px 0 50px;
+}
+
+ .bigInnerList li ul {
+     margin-top: 30px;
+ }
+  
+a {
+    color: #000;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.topSpace {
+    margin-top: 30px;
+    display: block;
+}
+
 .arrow {
-    background: url('/assets/Arrow.png') 0 15px no-repeat;
+    background: url('/assets/Arrow.png') 0 0 no-repeat;
     width: 30px;
-    height: 100px;
+    height: 50px;
     float: right;
     position: absolute;
     right: 0;
@@ -71,6 +98,8 @@ span { text-align: center;
     -ms-transform: rotate(180deg);
     -o-transform: rotate(180deg);
     transform: rotate(180deg);
+    float: left;
+    left: 0;
 }
 .leftRight {
     background-color: red;
@@ -94,12 +123,12 @@ span { text-align: center;
 
 
 /* For devices 768px and larger: */
-@media only screen and (min-device-width: 768px) {
+@media only screen and (min-width: 768px) {
     .image1 { content:url('/assets/Scott_1.JPG'); }
 }
 
-/* For devices 1024px and larger: */
-@media only screen and (min-device-width: 1024px) {
+/* For devices 992px and larger: */
+@media only screen and (min-width: 992px) {
 
     .topImage, .topText { height: 100%; }
     img {

@@ -1,13 +1,11 @@
 // Global vars
 var leftPos;
 var sectionSize;
-
 // Mechanics
 $(function () {
 
     // Mouse Scroll
     $('.horizontalRow').mousewheel(function (event, delta) {
-        console.log(delta);
         scrollAction(delta);
     });
 
@@ -18,7 +16,7 @@ $(function () {
             scrollAction(direction);
         },
         //Default is 75px, set to 0 for demo so any distance triggers swipe
-        threshold: 0
+        threshold: 0        
     });
 
     // Keyboard pressed
@@ -32,14 +30,14 @@ $(function () {
 // Functions
 function goLeft() {
     leftPos = $('.horizontalRow').scrollLeft();
-    sectionSize = $('ul li').outerWidth();
+    sectionSize = $('ul li').outerWidth(true);
     $('.horizontalRow').animate({ scrollLeft: leftPos - sectionSize }, 800);
 }
 
 
 function goRight() {
     leftPos = $('.horizontalRow').scrollLeft();
-    sectionSize = $('ul li').outerWidth();
+    sectionSize = $('ul li').outerWidth(true);
     $('.horizontalRow').animate({ scrollLeft: leftPos + sectionSize }, 800);
 }
 
@@ -71,4 +69,5 @@ function scrollAction(arg) {
         default: return;
 
     }
+   
 }

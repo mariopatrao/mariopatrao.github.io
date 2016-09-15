@@ -30,15 +30,21 @@ $(function () {
 // Functions
 function goLeft() {
     leftPos = $('.horizontalRow').scrollLeft();
-    sectionSize = $('ul li').outerWidth(true);
+    sectionSize = $('ul li').outerWidth();
     $('.horizontalRow').animate({ scrollLeft: leftPos - sectionSize }, 800);
 }
 
 
 function goRight() {
     leftPos = $('.horizontalRow').scrollLeft();
-    sectionSize = $('ul li').outerWidth(true);
+    sectionSize = $('ul li').outerWidth();
+    console.log("pos: " + leftPos + " // " + "section: " + sectionSize)
     $('.horizontalRow').animate({ scrollLeft: leftPos + sectionSize }, 800);
+}
+
+function scrollSlider() {
+    //$(window).scrollTop($('ul li[data-index="' + 2 + '"]').offset().top);
+    $('.horizontalRow').animate({ scrollLeft: $('ul li[data-index="' + 2 + '"]').offset().top }, 800);
 }
 
 function scrollAction(arg) {

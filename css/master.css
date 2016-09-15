@@ -33,6 +33,7 @@ ul li {
     position: relative;
     margin:0;
     white-space: normal;
+    margin-right: -5px;
 }
 
 ul li ul li {

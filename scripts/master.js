@@ -7,6 +7,7 @@ $(function () {
     // Mouse Scroll
     $('.horizontalRow').mousewheel(function (event, delta) {
         scrollAction(delta);
+        event.preventDefault();
     });
 
     // Mobile Swipe

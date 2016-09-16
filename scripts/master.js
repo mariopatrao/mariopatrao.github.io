@@ -20,6 +20,10 @@ $(function () {
         threshold: 0
     });
 
+    $('.horizontalRow').swipe(function (e) {
+        e.preventDefault();
+    });
+    
     // Keyboard pressed
     $(document).keydown(function (e) {
         scrollAction(e.which);

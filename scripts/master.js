@@ -7,18 +7,31 @@ $(function () {
     // Mouse Scroll
     $('.horizontalRow').mousewheel(function (event, delta) {
         scrollAction(delta);
-        event.preventDefault();
     });
 
     // Mobile Swipe
     $('.horizontalRow').swipe({
         //Generic swipe handler for all directions
-        swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+        swipeLeft: function (event, direction, distance, duration, fingerCount, fingerData) {
             scrollAction(direction);
+            event.preventDefault();
+        },
+        swipeRight: function (event, direction, distance, duration, fingerCount, fingerData) {
+            scrollAction(direction);
+            event.preventDefault();
+        },
+        swipeDown: function (event, direction, distance, duration, fingerCount, fingerData) {
+            event.preventDefault();
+        },
+        swipeUp: function (event, direction, distance, duration, fingerCount, fingerData) {
             event.preventDefault();
         },
         //Default is 75px, set to 0 for demo so any distance triggers swipe
         threshold: 75
+    });
+
+    $('.horizontalRow').swipe(function (e) {
+        e.preventDefault();
     });
 
     // Keyboard pressed
@@ -46,7 +59,14 @@ function goRight() {
 
 function scrollSlider() {
     //$(window).scrollTop($('ul li[data-index="' + 2 + '"]').offset().top);
-    $('.horizontalRow').animate({ scrollLeft: $('ul li[data-index="' + 2 + '"]').offset().top }, 800);
+    $(window).animate({ scrollLeft: $('ul li[data-index="' + 2 + '"]').offset().top }, 800);
+
+    console.log($('ul li[data-index="' + 2 + '"]').scrollLeft());
+    console.log($('.horizontalRow').scrollLeft());
+    //$('.horizontalRow').scrollLeft(0 + $('ul li[data-index="' + 2 + '"]').scrollLeft());
+
+    $('.horizontalRow').animate({ scrollLeft: $('.horizontalRow').scrollLeft() - $('ul li[data-index="' + 2 + '"]').scrollLeft() }, 800);
+
 }
 
 function scrollAction(arg) {

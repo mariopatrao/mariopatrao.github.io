@@ -16,7 +16,7 @@ $(function () {
             scrollAction(direction);
         },
         //Default is 75px, set to 0 for demo so any distance triggers swipe
-        threshold: 150
+        threshold: 80
     });
 
     // Keyboard pressed

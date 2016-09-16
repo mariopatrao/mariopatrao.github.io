@@ -27,7 +27,7 @@ $(function () {
             event.preventDefault();
         },
         //Default is 75px, set to 0 for demo so any distance triggers swipe
-        threshold: 75
+        threshold: 50
     });
 
     $('.horizontalRow').swipe(function (e) {

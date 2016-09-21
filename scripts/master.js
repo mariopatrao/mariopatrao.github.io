@@ -79,7 +79,7 @@ function goRight() {
     //alert(diff);
 
 
-    if (leftPos > 0 && diff > 0) distance = distance - diff;
+    if (leftPos > 0 && diff > 0) distance = distance + diff;
     //alert(distance);
 
     $('.horizontalRow').animate({ scrollLeft: distance }, 800);

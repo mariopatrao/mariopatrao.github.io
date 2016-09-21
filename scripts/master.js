@@ -73,14 +73,14 @@ function goLeft() {
 function goRight() {
     leftPos = $('.horizontalRow').scrollLeft();
     sectionSize = $('ul li').outerWidth();
-    alert("pos: " + leftPos + " // " + "section: " + sectionSize);
+    //alert("pos: " + leftPos + " // " + "section: " + sectionSize);
     var distance = leftPos + sectionSize;
     var diff = sectionSize - leftPos;
-    alert(diff);
+    //alert(diff);
 
 
     if (leftPos > 0 && diff > 0) distance = distance - diff;
-    alert(distance);
+    //alert(distance);
 
     $('.horizontalRow').animate({ scrollLeft: distance }, 800);
 

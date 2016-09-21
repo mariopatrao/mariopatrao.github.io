@@ -28,7 +28,7 @@ $(function () {
             event.preventDefault();
         },
         //Default is 75px, set to 0 for demo so any distance triggers swipe
-        threshold: 50
+        threshold: 75
     });
 
     $('.horizontalRow').swipe(function (e) {
@@ -39,6 +39,15 @@ $(function () {
     $(document).keydown(function (e) {
         scrollAction(e.which);
         e.preventDefault(); // prevent the default action (scroll / move caret)
+    });
+
+    // Arrow click
+    $(document).on('click', '.arrow', function (e) {
+        var classString = $(this).attr('class');
+        var direction = "left";
+        if (classString.indexOf("left") !== -1) direction = "right";
+        scrollAction(direction);
+        e.preventDefault(); // prevent the default action
     });
 
 });
@@ -96,7 +105,5 @@ function scrollAction(arg) {
             break;
 
         default: return;
-
     }
-   
 }

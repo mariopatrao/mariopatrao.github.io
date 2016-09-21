@@ -50,6 +50,15 @@ $(function () {
         e.preventDefault(); // prevent the default action
     });
 
+    // Arrow click
+    $(document).on('tap', '.arrow', function (e) {
+        var classString = $(this).attr('class');
+        var direction = "left";
+        if (classString.indexOf("left") !== -1) direction = "right";
+        scrollAction(direction);
+        e.preventDefault(); // prevent the default action
+    });
+
 });
 
 // Functions

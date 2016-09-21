@@ -27,6 +27,7 @@ $(function () {
         swipeUp: function (event, direction, distance, duration, fingerCount, fingerData) {
             event.preventDefault();
         },
+        
         //Default is 75px, set to 0 for demo so any distance triggers swipe
         threshold: 0
     });
@@ -51,12 +52,12 @@ $(function () {
     });
 
     // Arrow click
-    $(document).on('tap', '.arrow', function (e) {
+    $('.arrow').on('tap', function () {
         var classString = $(this).attr('class');
         var direction = "left";
         if (classString.indexOf("left") !== -1) direction = "right";
         scrollAction(direction);
-        e.preventDefault(); // prevent the default action
+        //e.preventDefault(); // prevent the default action
     });
 
 });
@@ -74,7 +75,6 @@ function goRight() {
     sectionSize = $('ul li').outerWidth();
     console.log("pos: " + leftPos + " // " + "section: " + sectionSize)
     $('.horizontalRow').animate({ scrollLeft: leftPos + sectionSize }, 800);
-    alert('action');
 }
 
 function scrollSlider() {

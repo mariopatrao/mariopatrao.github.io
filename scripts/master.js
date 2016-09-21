@@ -73,7 +73,7 @@ function goLeft() {
 function goRight() {
     leftPos = $('.horizontalRow').scrollLeft();
     sectionSize = $('ul li').outerWidth();
-    console.log("pos: " + leftPos + " // " + "section: " + sectionSize)
+    alert("pos: " + leftPos + " // " + "section: " + sectionSize)
     $('.horizontalRow').animate({ scrollLeft: leftPos + sectionSize }, 800);
 }
 

@@ -1,102 +1,78 @@
-// Global vars
-var leftPos;
-var sectionSize;
+// GLOBAL
+var yPos = 0;
+var elementCount = 0;
+
+$(document).ready(function () {
+    $('ul').fadeIn(1600);
+    yPos = 0;
+    elementCount = $('li').length;
+});
+
+
 // Mechanics
 $(function () {
 
     // Mouse Scroll
-    $('.horizontalRow').mousewheel(function (event, delta) {
+    $('.masterWrapper').mousewheel(function (event, delta) {
         scrollAction(delta);
         event.preventDefault();
     });
-
+   
     // Mobile Swipe
-    $('.horizontalRow').swipe({
+    $('.masterWrapper').swipe({
         //Generic swipe handler for all directions
         swipeLeft: function (event, direction, distance, duration, fingerCount, fingerData) {
-            scrollAction(direction);
             event.preventDefault();
+            scrollAction(direction);
         },
         swipeRight: function (event, direction, distance, duration, fingerCount, fingerData) {
-            scrollAction(direction);
             event.preventDefault();
+            scrollAction(direction);
         },
         swipeDown: function (event, direction, distance, duration, fingerCount, fingerData) {
+            scrollAction(direction);
             event.preventDefault();
+            
         },
         swipeUp: function (event, direction, distance, duration, fingerCount, fingerData) {
             event.preventDefault();
+            scrollAction(direction);
         },
-        
+
         //Default is 75px, set to 0 for demo so any distance triggers swipe
         threshold: 0
     });
 
-    $('.horizontalRow').swipe(function (e) {
-        e.preventDefault();
-    });
 
-    // Keyboard pressed
-    $(document).keydown(function (e) {
-        scrollAction(e.which);
-        e.preventDefault(); // prevent the default action (scroll / move caret)
-    });
+    // Scroll Area clicked
+    $(document)
+        .on('click', '.bottom', function (e) {
+            if ($('.visible').length == 0) {
+                $(this).parent().addClass('visible');
+            }
+            scrollAction(-1);
+            e.preventDefault();
+        })
+        .on('click', '.top', function (e) {
+            if ($('.visible').length == 0) {
+                $(this).parent().addClass('visible');
+            }
+            scrollAction(1);
+            e.preventDefault();
+        })
+    ;
 
-    // Arrow click
-    $(document).on('click', '.arrow', function (e) {
-        var classString = $(this).attr('class');
-        var direction = "left";
-        if (classString.indexOf("left") !== -1) direction = "right";
-        scrollAction(direction);
-        e.preventDefault(); // prevent the default action
-    });
+    //$('.bottom').on('click', function (e) {
+    //    if ($('.visible').length == 0) {
+    //        $(this).parent().addClass('visible');
+    //    }
+    //    scrollAction(-1);
+    //    e.preventDefault();
+    //});
 
-    // Arrow click
-    $('.arrow').on('tap', function () {
-        var classString = $(this).attr('class');
-        var direction = "left";
-        if (classString.indexOf("left") !== -1) direction = "right";
-        scrollAction(direction);
-        //e.preventDefault(); // prevent the default action
-    });
+
 
 });
-
-// Functions
-function goLeft() {
-    leftPos = $('.horizontalRow').scrollLeft();
-    sectionSize = $('ul li').outerWidth();
-    $('.horizontalRow').animate({ scrollLeft: leftPos - sectionSize }, 800);
-}
-
-
-function goRight() {
-    leftPos = $('.horizontalRow').scrollLeft();
-    sectionSize = $('ul li').outerWidth();
-    //alert("pos: " + leftPos + " // " + "section: " + sectionSize);
-    var distance = leftPos + sectionSize;
-    var diff = sectionSize - leftPos;
-    //alert(diff);
-
-
-    if (leftPos > 0 && diff > 0) distance = distance + diff;
-    //alert(distance);
-
-    $('.horizontalRow').animate({ scrollLeft: distance }, 800);
-
-}
-
-function scrollSlider() {
-    //$(window).scrollTop($('ul li[data-index="' + 2 + '"]').offset().top);
-    $(window).animate({ scrollLeft: $('ul li[data-index="' + 2 + '"]').offset().top }, 800);
-
-    console.log($('ul li[data-index="' + 2 + '"]').scrollLeft());
-    console.log($('.horizontalRow').scrollLeft());
-    //$('.horizontalRow').scrollLeft(0 + $('ul li[data-index="' + 2 + '"]').scrollLeft());
-
-    $('.horizontalRow').animate({ scrollLeft: $('.horizontalRow').scrollLeft() - $('ul li[data-index="' + 2 + '"]').scrollLeft() }, 800);
-
-}
 
 function scrollAction(arg) {
     switch (arg) {
@@ -105,14 +81,16 @@ function scrollAction(arg) {
         case -1: // Scroll Down
         case 39: // Right key pressed
         case 'left': // Mobile left swipe
-            goRight();
+        case 'up': // Mobile up swipe
+            scrollDown();
             break;
 
             // Move Left
         case 1: // Scroll Up
         case 37: // Left key pressed
         case 'right': // Mobile right swipe
-            goLeft();
+        case 'down': // Mobile right swipe
+            scrollUp();
             break;
 
             // Move Up
@@ -125,4 +103,62 @@ function scrollAction(arg) {
 
         default: return;
     }
+}
+
+// Functions
+function scrollDown() {
+
+
+    if ($('.visible').attr('data-index') < elementCount) {
+
+        yPos = yPos + $('li').outerHeight();
+
+        //alert(yPos + ' // ' + $('ul').innerHeight());
+
+        $('.masterWrapper').animate({
+            //scrollTop: x.top + $('li.visible').offset().top
+            //scrollTop: $('li[data-index="' + y + '"]').offset().top
+            scrollTop: yPos
+        }, 'slow', function () {
+            //alert($('.visible').first().attr('data-index'));
+            $('.visible').first().next().addClass('visible');
+            $('.visible').first().removeAttr('class');
+
+            // $('.visible').first().removeAttr('class');
+            // $('li[data-index="' + y + '"]').addClass('visible');
+
+        });
+
+    }
+    
+  
+    
+}
+
+function scrollUp() {
+
+    if ($('.visible').attr('data-index') > 1) {
+
+        yPos = yPos - $('li').outerHeight();
+
+        //alert(yPos + ' // ' + $('ul').innerHeight());
+
+        $('.masterWrapper').animate({
+            //scrollTop: x.top + $('li.visible').offset().top
+            //scrollTop: $('li[data-index="' + y + '"]').offset().top
+            scrollTop: yPos
+        }, 'slow', function () {
+            //alert($('.visible').first().attr('data-index'));
+            $('.visible').first().prev().addClass('visible');
+            $('.visible').last().removeAttr('class');
+
+            // $('.visible').first().removeAttr('class');
+            // $('li[data-index="' + y + '"]').addClass('visible');
+
+        });
+
+    }
+
+
+
 }

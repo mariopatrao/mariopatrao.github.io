@@ -9,12 +9,6 @@ img { margin: 50px auto 50px auto;
     display: block; 
 }
 
-/* For devices 768px and larger: */
-@media only screen and (min-width: 768px) {
-
-}
-
-/* For devices 992px and larger: */
-@media only screen and (min-width: 992px) {
-    
+span { text-align: center;
+    display:block;
 }

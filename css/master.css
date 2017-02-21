@@ -6,7 +6,8 @@ body { font-family: 'Open Sans', sans-serif;
 }
 
 img { margin: 50px auto 50px auto;
-    display: block; 
+    display: block;
+    width: 350px; 
 }
 
 span { text-align: center;

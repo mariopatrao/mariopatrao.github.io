@@ -1,4 +1,4 @@
-body { font-family: 'Open Sans', sans-serif;
+body { font-family: 'Raleway', sans-serif;
     color: #000;
     font-size: 1.1em;
     line-height: 1.2em;
@@ -7,11 +7,22 @@ body { font-family: 'Open Sans', sans-serif;
 
 img { margin: 50px auto 50px auto;
     display: block;
-    width: 190px; 
+    width: 180px;
 }
 
-span { text-align: center;
+p { text-align: center;
     display:block;
-    padding: 0 27px;
+    padding: 0 42px;
     line-height: 27px;
 }
+
+a { color: #000;
+    border-bottom: 1px solid #000;
+    padding-bottom: 3px;
+}
+
+a:focus, a:hover, .a:visited { color: #000; text-decoration: none; }
+
+.hideFirst { display: none; }
+
+.bottomSpace { padding-bottom: 35px; }
